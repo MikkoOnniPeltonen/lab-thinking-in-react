@@ -1,13 +1,7 @@
 
 import ProductRow from "./ProductRow"
 
-function ProductTable({ products, searchQuery, showAvailability }) {
-
-  const filteredProducts = products.filter((product) => {
-    return (
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) && (showAvailability ? product.inStock : true)
-    )
-  })
+function ProductTable(props) {
 
   return (
     <div className="product-table">
@@ -19,8 +13,8 @@ function ProductTable({ products, searchQuery, showAvailability }) {
           </tr>
         </thead>
         <tbody className="table-body">
-         {filteredProducts.map((product) => {return (
-          <ProductRow key={product.id} product={product} />
+         {props.products.map((oneProduct) => {return (
+          <ProductRow key={oneProduct.id} oneProduct={oneProduct} />
           )
          })}
         </tbody>

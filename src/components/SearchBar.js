@@ -1,24 +1,33 @@
 
 
 
-function SearchBar({ onSearch }) {
+function SearchBar(props) {
 
-  const handleSearchChange = (event) => {
-    const searchQuery = event.target.searchProduct.value
-    const showAvailability = event.target.checkBoxForStock.checked
-    onSearch(searchQuery, showAvailability)
+  function search(e) {
+    let filteredProducts
+    filteredProducts = props.products.filter((oneProduct) => {
+      return (
+        oneProduct.name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    })
+
+    if (e.target.value === '') {
+      props.setProducts(props.allProducts)
+    }
+    else {
+      props.setProducts(filteredProducts)
+    }
+    
   }
 
 
 
   return (
     <div>
-      <form>
-        <label htmlFor="search-bar"></label>
-        <input type="text" onChange={handleSearchChange} name="search-product" id="search-bar" placeholder="Search"/>
-        <label htmlFor="checkbox-for-stock"></label>
-        <input type="checkbox" name="checkBoxForStock" id="checkbox-for-stock" />
-      </form>
+      <input type="text" onChange={search} placeholder="Search"/>
+
+      <button onClick={props.sortByName}>Sort by Name</button>
+      <button onClick={props.sortByPrice}>Sort by Price</button>
     </div>
   )
 }

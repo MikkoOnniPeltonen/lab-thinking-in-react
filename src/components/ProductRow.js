@@ -1,14 +1,14 @@
 
 
 
-function ProductRow({ name, price, inStock }) {
+function ProductRow(props) {
 
-  const color = inStock ? 'black' : 'red'
+  const color = props.oneProduct.inStock ? 'black' : 'red'
 
   return (
     <tr className="product-row">
-      <td style={{ color }}>{name}</td>
-      <td>{price}</td>
+      <td style={{ color }}>{props.oneProduct.name}</td>
+      <td>{props.oneProduct.price}</td>
     </tr>
   )
 }

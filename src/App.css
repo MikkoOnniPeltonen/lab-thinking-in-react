@@ -24,11 +24,6 @@
   background-color: darkseagreen;
 }
 
-.table-head-row {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 .product-row {
   height: 15px;
 }
